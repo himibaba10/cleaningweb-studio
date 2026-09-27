@@ -255,6 +255,64 @@ div[id] {
   font-size: clamp(2rem, 4.2vw, 3.15rem);
 }
 
+/* --- founder / our approach --- */
+.founder__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+.founder__content {
+  min-width: 0;
+}
+.founder__title {
+  margin-bottom: 1.5rem;
+}
+.founder__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: var(--slate);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.trust-checklist {
+  min-width: 0;
+  background: linear-gradient(165deg, rgba(22, 41, 74, 0.72), rgba(13, 31, 58, 0.55));
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--sh-card);
+}
+.trust-checklist__title {
+  font-size: 1.4rem;
+  margin-bottom: 1.8rem;
+  color: var(--white);
+}
+.trust-checklist__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.trust-checklist__list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+.trust-checklist__list svg {
+  color: var(--mint);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.trust-checklist__list strong {
+  color: var(--white);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 1.05rem;
+}
+
 .text-gradient {
   background: linear-gradient(120deg, var(--mint), var(--mint-bright));
   -webkit-background-clip: text;
@@ -325,6 +383,36 @@ div[id] {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.01em;
+  max-width: 100%;
+  flex-wrap: wrap;
+  white-space: normal;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+.chip--offer {
+  align-items: flex-start;
+  border-radius: 16px;
+  border-color: rgba(0, 230, 118, 0.4);
+  background: rgba(0, 230, 118, 0.05);
+  cursor: pointer;
+  padding: 0.65rem 0.9rem 0.65rem 0.7rem;
+}
+.chip--offer .chip__dot {
+  margin-top: 0.35rem;
+  flex: none;
+}
+.chip__text {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.chip__text strong {
+  color: var(--white);
+  font-weight: 700;
+}
+.chip__text span {
+  color: #b6f5d3;
+  font-weight: 500;
 }
 .chip__dot {
   width: 7px;
@@ -625,6 +713,14 @@ div[id] {
   letter-spacing: -0.03em;
   color: var(--white);
   flex: none;
+  min-width: 0;
+  max-width: min(100%, 200px);
+}
+.brand img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: 32px;
 }
 .brand__mark {
   display: grid;
@@ -760,10 +856,18 @@ div[id] {
   align-items: center;
 }
 
+.hero__copy {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .hero__title {
-  font-size: clamp(2.5rem, 5.6vw, 4.15rem);
+  font-size: clamp(1.85rem, 7.2vw, 4.15rem);
   letter-spacing: -0.035em;
   margin-top: 1.35rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .hero__sub {
@@ -827,9 +931,14 @@ div[id] {
 /* --- device cluster --- */
 .hero__visual {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 .devices {
   position: relative;
+  width: 100%;
+  max-width: 100%;
   perspective: 1700px;
   transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
   transition: transform 0.6s var(--ease);
@@ -2295,8 +2404,27 @@ div[id] {
     gap: 3.5rem;
   }
   .hero__visual {
-    max-width: 620px;
+    max-width: 560px;
     margin-inline: auto;
+    overflow: hidden;
+    padding: 1.25rem 0.75rem 2rem;
+  }
+  .imac {
+    transform: rotateY(-7deg) rotateX(3deg) rotateZ(0deg);
+  }
+  .iphone {
+    left: 2%;
+    bottom: -2%;
+    width: 26%;
+    min-width: 100px;
+  }
+  .float-chip--a {
+    top: 4%;
+    left: 2%;
+  }
+  .float-chip--b {
+    right: 2%;
+    bottom: 14%;
   }
   .hero__sub {
     max-width: 44rem;
@@ -2329,6 +2457,14 @@ div[id] {
   }
   .nav__inner {
     justify-content: space-between;
+    gap: 0.75rem;
+  }
+  /* Get Started lives in the mobile drawer — free space for the logo */
+  .nav__actions .btn {
+    display: none;
+  }
+  .brand {
+    max-width: min(100%, 180px);
   }
   .plans {
     grid-template-columns: 1fr;
@@ -2387,12 +2523,29 @@ div[id] {
   .browser {
     --screen-h: 300px;
   }
+  .hero__visual {
+    max-width: 100%;
+    padding: 1rem 0.25rem 1.75rem;
+  }
+  .devices {
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(0.94);
+    transform-origin: center bottom;
+  }
+  .imac {
+    transform: rotateY(-4deg) rotateX(2deg) rotateZ(0deg);
+  }
+  .iphone {
+    left: 4%;
+    bottom: 0;
+    width: 28%;
+    min-width: 88px;
+  }
   .float-chip--a {
-    top: -3%;
-    left: -2%;
+    top: 2%;
+    left: 4%;
   }
   .float-chip--b {
-    right: -1%;
+    right: 4%;
     bottom: 10%;
   }
   .hero__trust {
@@ -2409,7 +2562,7 @@ div[id] {
 
 @media (max-width: 560px) {
   .container {
-    padding-inline: 18px;
+    padding-inline: 16px;
   }
   .footer__grid {
     grid-template-columns: 1fr;
@@ -2417,12 +2570,55 @@ div[id] {
   .footer__brand {
     grid-column: auto;
   }
+  .brand {
+    max-width: min(100%, 150px);
+  }
+  .brand img {
+    max-height: 26px;
+  }
+  .nav__inner {
+    height: 64px;
+  }
+  .chip {
+    font-size: 0.72rem;
+    padding: 0.45rem 0.75rem 0.45rem 0.5rem;
+    border-radius: 14px;
+  }
+  .hero__title {
+    font-size: clamp(1.65rem, 8.5vw, 2.35rem);
+    margin-top: 1rem;
+  }
+  .hero__sub {
+    font-size: 0.95rem;
+  }
   .btn--lg,
   .btn--xl {
     width: 100%;
   }
   .hero__cta .btn {
     width: 100%;
+  }
+  .hero__cta .btn {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+    padding-block: 0.95rem;
+  }
+  .hero__visual {
+    padding: 0.75rem 0 1.5rem;
+  }
+  .devices {
+    transform: translate3d(0, 0, 0) scale(0.88);
+    transform-origin: center center;
+  }
+  .imac {
+    transform: none;
+  }
+  .iphone {
+    left: 6%;
+    bottom: 2%;
+    min-width: 78px;
+    transform: rotate(-4deg);
   }
   .float-chip {
     padding: 0.5rem 0.7rem;
@@ -2433,8 +2629,22 @@ div[id] {
   .float-chip span {
     display: none;
   }
+  .float-chip--a {
+    top: 0;
+    left: 6%;
+  }
+  .float-chip--b {
+    right: 6%;
+    bottom: 8%;
+  }
   .final__box {
     border-radius: 26px;
+  }
+  .floating-btn {
+    right: 12px;
+    bottom: 12px;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
   }
 }
 
